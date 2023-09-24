@@ -1,21 +1,24 @@
 package com.example.job_email_sender.controller;
 
-import com.example.job_email_sender.model.ApprovedJob;
+import com.example.job_email_sender.kafka_consumer.MyTopicConsumerLister;
 import com.example.job_email_sender.service.ApprovedJobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class MailSendingController {
 
     private final ApprovedJobService approvedJobService;
-    @PostMapping("job-confirmation")
-    public void sendingLetter(@RequestBody ApprovedJob approvedJob) {
+    private final MyTopicConsumerLister myTopicConsumerLister;
 
-        approvedJobService.getApprovedJob(approvedJob);
+    @PostMapping("job-confirmation")
+    public void sendingLetter() {
+
+        List<String> massagesFromTopic = myTopicConsumerLister.getMassagesFromTopic();
 
     }
 

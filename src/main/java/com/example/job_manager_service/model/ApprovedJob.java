@@ -13,7 +13,7 @@ public class ApprovedJob {
     private String employeeName;
     //почта сотрудника для подтверждения работы
     private String email;
-    //название работ
+    //название должности
     private String jobType;
     //
     private LocalDate dataStartJob;

@@ -1,8 +1,6 @@
 package com.example.job_manager_service.kafka_producer;
 
-import com.example.job_manager_service.model.ApprovedJob;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +14,7 @@ import java.util.Map;
 @Configuration
 public class ProducerConfiguration {
 
-    private static final String KAFKA_BROKER = "localhost:29092";
+    private static final String KAFKA_BROKER = "localhost:39092";
 
     @Bean
     public ProducerFactory<String, String> producerFactory() {
