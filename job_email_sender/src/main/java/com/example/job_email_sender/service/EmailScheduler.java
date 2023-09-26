@@ -17,6 +17,7 @@ public class EmailScheduler {
     private final MyTopicConsumerLister myTopicConsumerLister;
     private final ApprovedJobService approvedJobService;
 
+
     @Scheduled(fixedRate = 10000)
     public void startScheduler() {
 
@@ -25,8 +26,10 @@ public class EmailScheduler {
         for (String massage : massagesFromTopic) {
             ApprovedJob approvedJob = new ApprovedJob();
             approvedJob.setJobDescription(massage);
-            approvedJob.setEmail("diman19891989@mail.ru");
+            approvedJob.setEmail(approvedJobService.findEmail(massage));
             approvedJobService.getApprovedJob(approvedJob);
+
         }
+
     }
 }

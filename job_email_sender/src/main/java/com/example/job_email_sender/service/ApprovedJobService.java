@@ -5,4 +5,5 @@ import com.example.job_email_sender.model.ApprovedJob;
 public interface ApprovedJobService {
 
     public void getApprovedJob(ApprovedJob approvedJob);
+    public String findEmail(String value);
 }

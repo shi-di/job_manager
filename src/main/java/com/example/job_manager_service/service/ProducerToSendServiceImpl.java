@@ -16,7 +16,7 @@ public class ProducerToSendServiceImpl implements ProducerToSendService {
     @Override
     public void sendApprovedJob(ApprovedJob approvedJob) {
 
-        String sendEmail = String.format(APPROVE_MASSAGE_FOR_EMAIL_SEND, approvedJob.getJobType(),
+        String sendEmail = String.format(APPROVE_MASSAGE_FOR_EMAIL_SEND, approvedJob.getJobType(), approvedJob.getJobDescription(),
                 approvedJob.getDataStartJob(), approvedJob.getEmail());
 
         kafkaTemplate.send("myTopic", sendEmail);
