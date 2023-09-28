@@ -1,11 +1,7 @@
 package com.example.job_email_sender.service;
 
-import com.example.job_email_sender.application_exception.NotFoundEmailException;
 import com.example.job_email_sender.email_sender.EmailSender;
 import com.example.job_email_sender.model.ApprovedJob;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

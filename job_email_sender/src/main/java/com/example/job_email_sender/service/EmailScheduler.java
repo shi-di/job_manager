@@ -18,7 +18,7 @@ public class EmailScheduler {
     private final ApprovedJobService approvedJobService;
 
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 1800000)
     public void startScheduler() {
 
         List<String> massagesFromTopic = myTopicConsumerLister.getMassagesFromTopic();
