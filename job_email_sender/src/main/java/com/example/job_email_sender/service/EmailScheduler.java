@@ -30,6 +30,5 @@ public class EmailScheduler {
             approvedJobService.getApprovedJob(approvedJob);
 
         }
-
     }
 }

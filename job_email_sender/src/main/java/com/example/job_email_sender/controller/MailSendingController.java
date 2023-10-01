@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.example.job_email_sender.constant.ApplicationConstant.JOB_CONFIRMATION;
+
 @RestController
 @RequiredArgsConstructor
 public class MailSendingController {
@@ -15,7 +17,7 @@ public class MailSendingController {
     private final ApprovedJobService approvedJobService;
     private final MyTopicConsumerLister myTopicConsumerLister;
 
-    @PostMapping("job-confirmation")
+    @PostMapping(JOB_CONFIRMATION)
     public void sendingLetter() {
 
         List<String> massagesFromTopic = myTopicConsumerLister.getMassagesFromTopic();

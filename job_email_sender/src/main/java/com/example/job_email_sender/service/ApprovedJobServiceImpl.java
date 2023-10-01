@@ -5,6 +5,9 @@ import com.example.job_email_sender.model.ApprovedJob;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static com.example.job_email_sender.constant.ApplicationConstant.CONFIRMATION_OF_WORK;
+import static com.example.job_email_sender.constant.ApplicationConstant.TO_WHOM;
+
 @Service
 @RequiredArgsConstructor
 public class ApprovedJobServiceImpl implements ApprovedJobService {
@@ -15,13 +18,13 @@ public class ApprovedJobServiceImpl implements ApprovedJobService {
     @Override
     public void getApprovedJob(ApprovedJob approvedJob) {
 
-        emailSender.sendMail("Подтвержденная задача в работу", approvedJob.getJobDescription(), approvedJob.getEmail());
+        emailSender.sendMail(CONFIRMATION_OF_WORK, approvedJob.getJobDescription(), approvedJob.getEmail());
     }
 
     @Override
     public String findEmail(String value) {
 
-        int i = value.indexOf("кому:") + 6;
+        int i = value.indexOf(TO_WHOM) + 6;
         return value.substring(i);
     }
 }

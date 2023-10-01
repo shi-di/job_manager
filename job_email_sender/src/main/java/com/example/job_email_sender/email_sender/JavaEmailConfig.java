@@ -7,6 +7,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
+import static com.example.job_email_sender.constant.ApplicationConstant.*;
+
 @Configuration
 public class JavaEmailConfig {
 
@@ -14,14 +16,14 @@ public class JavaEmailConfig {
     public JavaMailSender getMailSender() {
 
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost("smtp.yandex.ru");
+        javaMailSender.setHost(HOST_YANDEX);
         javaMailSender.setPort(465);
-        javaMailSender.setUsername("shi-java5@yandex.ru");
-        javaMailSender.setPassword("alabzaipxitjokyr");
+        javaMailSender.setUsername(EMAIL);
+        javaMailSender.setPassword(PASSWORD);
 
         Properties properties = javaMailSender.getJavaMailProperties();
-        properties.setProperty("mail.transport.protocol", "smtps");
-        properties.setProperty("mail.debug", "true");
+        properties.setProperty(TRANSPORT_PROTOCOL, SMTPS);
+        properties.setProperty(MAIL_DEBUG, TRUE);
 
         return javaMailSender;
     }
