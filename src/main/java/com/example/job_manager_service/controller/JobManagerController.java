@@ -12,37 +12,39 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
+import static com.example.job_manager_service.constant.ApplicationConstant.*;
+
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "job manager", description = "Сервис для управления плановыми работами")
+@Tag(name = JOB_MANAGER, description = SCHEDULED_WORK_MANAGEMENT_SERVICE)
 public class JobManagerController {
 
     private final JobManagerService jobManagerService;
 
-    @PostMapping("add-new-job")
-    @Operation(summary = "Регистрация новых работ на проверку")
-    @Parameter(name = "doc", description = "название документа", example = "Плановые работы")
+    @PostMapping(ADD_NEW_JOB)
+    @Operation(summary = REGISTRATION_OF_NEW_WORKS_FOR_CHECKING)
+    @Parameter(name = DOC, description = DOCUMENT_NAME, example = PLANNED_WORK)
     public String saveUnapprovedJob(@RequestBody UnapprovedJob jobForm, @RequestParam String doc) {
 
         return jobManagerService.saveJobToBase(jobForm, doc);
     }
 
-    @PostMapping("add-responsible-person")
-    @Operation(summary = "Регистрация ответственного лица")
+    @PostMapping(ADD_RESPONSIBLE_PERSON)
+    @Operation(summary = REGISTRATION_OF_RESPONSIBLE_PERSON)
     public void saveResponsiblePerson(@RequestBody ResponsiblePerson person) {
 
         jobManagerService.saveToPersonBase(person);
     }
 
-    @PostMapping("approve-job")
-    @Operation(summary = "Подтверждение работ из списка с отправкой уведомления")
+    @PostMapping(APPROVED_JOB)
+    @Operation(summary = WORK_CONFIRMATION_SENDING_MAIL)
     public void approveJob(@RequestBody AuthenticationInfo authenticationInfo, @RequestParam LocalDate localDate) {
 
         jobManagerService.approveJob(authenticationInfo, localDate);
     }
 
-    @PostMapping("list-unapproved-job")
-    @Operation(summary = "Полный список не подтверждённых работ")
+    @PostMapping(LIST_UNAPPROVED_JOB)
+    @Operation(summary = FULL_LIST_OF_UNCONFIRMED_WORKS)
     public void listUnapprovedJob(@RequestBody AuthenticationInfo authenticationInfo) {
 
         jobManagerService.unapprovedJob(authenticationInfo);
